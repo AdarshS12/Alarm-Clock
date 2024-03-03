@@ -1,38 +1,38 @@
 function setAlarm() {
-    const alarmTimeInput = document.getElementById('alarmTime');
-    const selectedTime = alarmTimeInput.value;
+    const timeAlarmInput = document.getElementById('timeAlarm');
+    const timeSelected = timeAlarmInput.value;
     
     // Create new alarm item
-    const alarmItem = document.createElement('li');
-    alarmItem.textContent = `Alarm set for ${selectedTime}`;
-    document.getElementById('alarmList').appendChild(alarmItem);
+    const itemAlarm = document.createElement('li');
+    itemAlarm.textContent = `Alarm set for ${timeSelected}`;
+    document.getElementById('alarmList').appendChild(itemAlarm);
 
     // Get the current time
     const now = new Date();
     const hours = now.getHours();
     const minutes = now.getMinutes();
     
-    // Parse the selected time string into hours and minutes
-    const [selectedHours, selectedMinutes] = selectedTime.split(':').map(Number);
+    //The selected time string into hours and minutes
+    const [hoursSelected, minutesSelected] = timeSelected.split(':').map(Number);
 
-    // Calculate the difference in milliseconds between the current time and the alarm time
-    let timeDiff = (selectedHours - hours) * 60 * 60 * 1000;
-    timeDiff += (selectedMinutes - minutes) * 60 * 1000;
+    //The difference in milliseconds between the current time and the alarm time
+    let timeDiff = (hoursSelected - hours) * 60 * 60 * 1000;
+    timeDiff += (minutesSelected - minutes) * 60 * 1000;
 
     // Set the alarm using setTimeout
     setTimeout(() => {
-      showAlert();
-    }, timeDiff);
+      alertShow();
+    }, timeDiff); 
   }
 
-  function showAlert() {
-    const alertBox = document.createElement('div');
-    alertBox.classList.add('alert');
-    alertBox.textContent = 'Wake up!!!';
-    document.body.appendChild(alertBox);
+  function alertShow() {
+    const boxAlert = document.createElement('div');
+    boxAlert.classList.add('alert');
+    boxAlert.textContent = 'Wake up!!!';
+    document.body.appendChild(boxAlert);
 
     setTimeout(() => {
-      alertBox.remove();
+      boxAlert.remove();
     }, 5000); // Remove the alert after 5 seconds
   }
 
